@@ -1,0 +1,15 @@
+services:
+    mongo:
+        image: mongodb/mongodb-community-server:latest
+        container_name: mongodb_home_sense
+        restart: unless-stopped
+        ports:
+            - "27017:27017"
+        volumes:
+            - mongodb-home-sense:/data/db
+        environment:
+            MONGODB_INITDB_ROOT_USERNAME: ${DBMONGO_USER}
+            MONGODB_INITDB_ROOT_PASSWORD: ${DBMONGO_PASSWORD}
+
+volumes:
+    mongodb-home-sense:
