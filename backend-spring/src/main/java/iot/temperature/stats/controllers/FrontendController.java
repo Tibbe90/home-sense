@@ -6,15 +6,15 @@ import org.springframework.web.bind.annotation.RestController;
 import iot.temperature.stats.models.StatsDTO;
 import iot.temperature.stats.models.TempHumidity;
 import iot.temperature.stats.models.TempHumidityDTO;
+import iot.temperature.stats.models.TempMapper;
 import iot.temperature.stats.service.FrontendService;
 
-import org.springframework.http.HttpStatus;
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 
 @RestController 
@@ -28,7 +28,7 @@ public FrontendController(FrontendService frontendService) {
 }
 
     @GetMapping("/live-data")
-    public TempHumidityDTO getLatestData() {
+    public List<TempHumidityDTO> getLatestData() {
         return frontendService.getLatestData();
     }
     
@@ -39,7 +39,7 @@ public FrontendController(FrontendService frontendService) {
     
     @GetMapping("/all-stats")
     public StatsDTO getAllStats() {
-        return frontendService.getAllStats();
+        return frontendService.get24hStats();
     }
     
     //Returns abnormal data, otherwise ok

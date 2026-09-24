@@ -18,6 +18,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 import iot.temperature.stats.models.StatsDTO;
 import iot.temperature.stats.models.TempHumidity;
+import iot.temperature.stats.models.TempHumidityDTO;
 import iot.temperature.stats.service.ArduinoService;
 import iot.temperature.stats.service.FrontendService;
 
@@ -41,7 +42,7 @@ class StatsApplicationTests extends AbstractBaseIntegrationTest {
 		TempHumidity measTempHumidity = new TempHumidity(id, device, 88, 99);
 		arduinoService.saveMeasurement(measTempHumidity);
 
-		List<TempHumidity> latestData = frontendService.getLatestData();
+		List<TempHumidityDTO> latestData = frontendService.getLatestData();
 		assertFalse(latestData.isEmpty());
 	}
 
@@ -54,8 +55,8 @@ class StatsApplicationTests extends AbstractBaseIntegrationTest {
 		arduinoService.saveMeasurement(measTempHumidity);
 		arduinoService.saveMeasurement(measTempHumidityNew);
 
-		List<TempHumidity> latestData = frontendService.getLatestData();
-		TempHumidity latest = latestData.stream()
+		List<TempHumidityDTO> latestData = frontendService.getLatestData();
+		TempHumidityDTO latest = latestData.stream()
 				.filter(d -> d.getDevice().contains(device))
 				.findFirst()
 				.orElseThrow();
