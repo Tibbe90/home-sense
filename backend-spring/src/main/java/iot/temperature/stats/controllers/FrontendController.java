@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import iot.temperature.stats.models.StatsDTO;
 import iot.temperature.stats.models.TempHumidity;
 import iot.temperature.stats.models.TempHumidityDTO;
+import iot.temperature.stats.service.FrontendService;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

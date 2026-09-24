@@ -9,32 +9,38 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class TempHumidity {
 
     @Id
-    private String id;
-    private float temp;
-    private float humidity;
+    private int id;
+    private String device;
+    private double temp;
+    private double humidity;
     private Instant measureTime;
 
-    public TempHumidity(String id, float temp, float humidity) {
+    public TempHumidity(int id, String device, double temp, double humidity) {
         this.id = id;
         this.temp = temp;
         this.humidity = humidity;
+        this.device = device;
         this.measureTime = Instant.now();
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public float getTemp() {
+    public double getTemp() {
         return temp;
     }
 
-    public float getHumidity() {
+    public double getHumidity() {
         return humidity;
     }
 
     public Instant getMeasureTime() {
         return measureTime;
+    }
+
+    public String getDevice() {
+        return device;
     }
 
     

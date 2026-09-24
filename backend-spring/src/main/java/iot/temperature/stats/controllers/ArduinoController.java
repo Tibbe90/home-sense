@@ -16,6 +16,7 @@ public class ArduinoController {
     
     @PostMapping("/sensor-data")
     public void postTempHumidity(@Valid @RequestBody TempHumidity measurements) {
+        arduinoService.saveMeasurement(measurements);
         System.out.println(measurements);
         
     }
