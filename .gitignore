@@ -4,6 +4,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 /iot-devices/dht-11/settings.h
+/backend-quarkus/
 
 ### STS ###
 .apt_generated
