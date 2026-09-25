@@ -16,7 +16,7 @@ import org.testcontainers.containers.MongoDBContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import iot.temperature.stats.models.StatsDTO;
+import iot.temperature.stats.models.Stats;
 import iot.temperature.stats.models.TempHumidity;
 import iot.temperature.stats.models.TempHumidityDTO;
 import iot.temperature.stats.service.ArduinoService;
@@ -79,10 +79,10 @@ class StatsApplicationTests extends AbstractBaseIntegrationTest {
 		arduinoService.saveMeasurement(new TempHumidity(id + 9, device, 75, 52));
 		arduinoService.saveMeasurement(new TempHumidity(id + 10, device, 75, 52));
 
-		StatsDTO statsDTO = frontendService.get24hStats(device);
-		assertEquals(25, statsDTO.getMin());
-		assertEquals(75, statsDTO.getMax());
-		assertEquals(50, statsDTO.getAverage());
+		Stats stats = frontendService.get24hStats(device);
+		assertEquals(25, stats.getMin());
+		assertEquals(75, stats.getMax());
+		assertEquals(50, stats.getAverage());
 	}
 
 	@Test

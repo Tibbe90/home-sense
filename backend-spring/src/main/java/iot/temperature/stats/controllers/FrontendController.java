@@ -3,7 +3,7 @@ package iot.temperature.stats.controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import iot.temperature.stats.models.StatsDTO;
+import iot.temperature.stats.models.Stats;
 import iot.temperature.stats.models.TempHumidity;
 import iot.temperature.stats.models.TempHumidityDTO;
 import iot.temperature.stats.models.TempMapper;
@@ -33,13 +33,13 @@ public FrontendController(FrontendService frontendService) {
     }
     
     @GetMapping("/24stats")
-    public StatsDTO get24hStats() {
-        return frontendService.get24hStats();
+    public Stats get24hStats() {
+        return frontendService.get24hReadings();
     }
     
     @GetMapping("/all-stats")
-    public StatsDTO getAllStats() {
-        return frontendService.get24hStats();
+    public Stats getAllStats() {
+        return frontendService.getAllReadings();
     }
     
     //Returns abnormal data, otherwise ok
