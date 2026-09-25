@@ -5,6 +5,8 @@ target/
 !**/src/test/**/target/
 /iot-devices/dht-11/settings.h
 /backend-quarkus/
+/backend-spring/.env
+home-sense.drawio.png
 
 ### STS ###
 .apt_generated
