@@ -2,19 +2,17 @@ package iot.temperature.stats.service;
 
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.DoubleSummaryStatistics;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.aggregation.ArrayOperators.In;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
 import iot.temperature.stats.models.Stats;
+import iot.temperature.stats.models.StatsDTO;
 import iot.temperature.stats.models.TempHumidity;
 import iot.temperature.stats.models.TempHumidityDTO;
 import iot.temperature.stats.models.TempMapper;
@@ -58,18 +56,18 @@ public class FrontendService {
         return dtos;
     }
 
-    public List<TempHumidity> get24hReadings() {
+    public List<StatsDTO> get24hReadings() {
         Instant twentyFourH = Instant.now().minusSeconds(86400);
         Query query = new Query();
         query.addCriteria(Criteria.where("measureTime").gt(twentyFourH));
         query.with(Sort.by(Sort.Direction.ASC, "measureTime"));
         List<TempHumidity> readings = mongoOperations.find(query, TempHumidity.class);
-        return readings;
+        return calculateStats(readings);
     }
 
-    public Stats getAllReadings() {
-
-        return new Stats();
+    public List<StatsDTO> getAllReadings() {
+        List<TempHumidity> fullStats = mongoOperations.findAll(TempHumidity.class);
+        return calculateStats(fullStats);
     }
 
     public String getStatus() {
@@ -78,8 +76,7 @@ public class FrontendService {
     }
 
     public void delete() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        mongoOperations.dropCollection(TempHumidity.class);
     }
 
     public void delete(int readings) {
@@ -88,8 +85,8 @@ public class FrontendService {
     }
 
     // Calculate the stats in the given list of measurements
-    public List<Stats> calculateStats(List<TempHumidity> measurements) {
-        List<Stats> displayStats = new ArrayList<>();
+    public List<StatsDTO> calculateStats(List<TempHumidity> measurements) {
+        List<StatsDTO> displayStats = new ArrayList<>();
 
         if (measurements.isEmpty()) {
             return displayStats;
@@ -98,13 +95,11 @@ public class FrontendService {
         for (String device : devices) {
             List<TempHumidity> deviceMeasurements = measurements.stream()
                     .filter(d -> {
-                        return device.equals(d.getDevice());
-                    })
+                        return device.equals(d.getDevice());})
                     .collect(Collectors.toList());
 
                     if (deviceMeasurements.isEmpty()) {
-                        continue;
-                    }
+                        continue;}
 
                     // SummaryStatistics is a class that calculates stats for you with much cleaner code.
                     //You can get min, max, average and count. .accept puts a new variable into the calculation.
@@ -116,6 +111,11 @@ public class FrontendService {
                     .summaryStatistics();
             Instant periodStart = deviceMeasurements.get(0).getMeasureTime();
             Instant periodEnd = deviceMeasurements.get(deviceMeasurements.size() - 1).getMeasureTime();
+
+            List<TempHumidityDTO> dtos = deviceMeasurements.stream()
+                .map(temp -> TempMapper.toDisplayTempHumidityDTO(temp))
+                .toList();
+
             Stats stats = new Stats(
                     device,
                     tempStats.getAverage(),
@@ -126,42 +126,7 @@ public class FrontendService {
                     humidityStats.getMax(),
                     periodStart,
                     periodEnd);
-            displayStats.add(stats);
-
-            /*
-             * double tempSum =
-             * deviceMeasurements.stream().mapToDouble(TempHumidity::getTemp).sum();
-             * double humiditySum =
-             * deviceMeasurements.stream().mapToDouble(TempHumidity::getHumidity).sum();
-             * int amount = deviceMeasurements.size();
-             * double minTemp = deviceMeasurements.stream()
-             * .mapToDouble(m -> m.getTemp())
-             * .min().getAsDouble();
-             * 
-             * double maxTemp = deviceMeasurements.stream()
-             * .mapToDouble(m -> m.getTemp())
-             * .max().getAsDouble();
-             * double minHumidity = deviceMeasurements.stream()
-             * .mapToDouble(m -> m.getHumidity())
-             * .min().getAsDouble();
-             * double maxHumidity = deviceMeasurements.stream()
-             * .mapToDouble(m -> m.getHumidity())
-             * .max().getAsDouble();
-             * 
-             * Instant periodStart = deviceMeasurements.get(0).getMeasureTime();
-             * Instant periodEnd = deviceMeasurements.get(amount - 1).getMeasureTime();
-             * Stats stats = new Stats(
-             * device,
-             * tempSum / amount,
-             * minTemp,
-             * maxTemp,
-             * humiditySum / amount,
-             * minHumidity,
-             * maxHumidity,
-             * periodStart,
-             * periodEnd);
-             * displayStats.add(stats);
-             */
+            displayStats.add(new StatsDTO(stats, dtos));
         }
         return displayStats;
 
