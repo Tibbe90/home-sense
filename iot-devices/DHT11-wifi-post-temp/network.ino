@@ -4,7 +4,7 @@
 void httpRequest(float celsius, float humidity) {
   JsonDocument data;
 
-  data["device"] = "Arduino-wifi-hi-range";
+  data["device"] = "Arduino-wifi-lo-range";
   data["temp"] = celsius;
   data["humidity"] = humidity;
 

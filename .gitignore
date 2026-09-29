@@ -4,6 +4,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 /iot-devices/Modulino-wifi-post-temp/settings.h
+/iot-devices/DHT11-wifi-post-temp/settings.h
 /backend-quarkus/
 /backend-spring/.env
 home-sense.drawio.png
