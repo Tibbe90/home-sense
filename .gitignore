@@ -3,7 +3,7 @@ target/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-/iot-devices/dht-11/settings.h
+/iot-devices/Modulino-wifi-post-temp/settings.h
 /backend-quarkus/
 /backend-spring/.env
 home-sense.drawio.png

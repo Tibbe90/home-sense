@@ -17,9 +17,9 @@ public class ApiKeyAuthFilter extends OncePerRequestFilter {
 
     private static final String API_KEY_HEADER = "API-Key";
 
-    @Value("${app.arduino-api-key}")
+    @Value("${arduino.api.key}")
     private String expectedArduinoKey;
-    @Value("${app.arduino-frontend-api-key}")
+    @Value("${arduino.frontend.api.key}")
     private String expectedFrontendKey;
 
     @Override

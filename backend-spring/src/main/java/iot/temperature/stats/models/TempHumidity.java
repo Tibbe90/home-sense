@@ -9,21 +9,26 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class TempHumidity {
 
     @Id
-    private int id;
+    private String id;
     private String device;
     private double temp;
     private double humidity;
     private Instant measureTime;
 
-    public TempHumidity(int id, String device, double temp, double humidity) {
-        this.id = id;
+    public TempHumidity(String device, double temp, double humidity) {
         this.temp = temp;
         this.humidity = humidity;
         this.device = device;
         this.measureTime = Instant.now();
     }
 
-    public int getId() {
+    @Override
+    public String toString() {
+        return "TempHumidity [id=" + id + ", device=" + device + ", temp=" + temp + ", humidity=" + humidity
+                + ", measureTime=" + measureTime + "]";
+    }
+
+    public String getId() {
         return id;
     }
 
