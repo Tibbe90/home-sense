@@ -1,6 +1,7 @@
+#include <Arduino_Modulino.h>
 #include <WiFiS3.h>
+#include <ArduinoHttpClient.h>
 #include <ArduinoJson.h>
-#include <Modulino.h>
 #include "settings.h"
 
 char ssid[] = SECRET_SSID;
@@ -12,7 +13,9 @@ int status = WL_IDLE_STATUS;
 WiFiClient client;
 char server[] = "192.168.50.16";
 int port = 8081;
+char endpoint[] = "/arduino/sensor-data";
 
+HttpClient httpClient = HttpClient(client, server, port);
 ModulinoThermo thermo;
 float celsius = 0;
 float humidity = 0;
