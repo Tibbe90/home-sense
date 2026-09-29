@@ -1,9 +1,11 @@
 package iot.temperature.stats.service;
 
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.stereotype.Service;
 
 import iot.temperature.stats.models.TempHumidity;
 
+@Service 
 public class ArduinoService {
 
     MongoOperations mongoOperations;

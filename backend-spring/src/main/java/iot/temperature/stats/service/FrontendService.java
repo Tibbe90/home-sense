@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.stereotype.Service;
 
 import iot.temperature.stats.models.Stats;
 import iot.temperature.stats.models.StatsDTO;
@@ -23,6 +24,7 @@ Plugga.tech MongoDb med Spring Boot
 
 
 */
+@Service 
 public class FrontendService {
 
     private final MongoOperations mongoOperations;
