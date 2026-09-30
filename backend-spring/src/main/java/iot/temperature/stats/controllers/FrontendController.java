@@ -31,6 +31,7 @@ public class FrontendController {
 
     @GetMapping("/24stats")
     public List<StatsDTO> get24hStats() {
+        System.out.println(frontendService.get24hReadings());
         return frontendService.get24hReadings();
     }
 

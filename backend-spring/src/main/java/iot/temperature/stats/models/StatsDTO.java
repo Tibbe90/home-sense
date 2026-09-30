@@ -4,9 +4,9 @@ import java.util.List;
 
 public class StatsDTO {
     private Stats stats;
-    private List<TempHumidityDTO> measurements;
+    private List<StatsTempHumidityDTO> measurements;
     
-    public StatsDTO(Stats stats, List<TempHumidityDTO> measurements) {
+    public StatsDTO(Stats stats, List<StatsTempHumidityDTO> measurements) {
         this.stats = stats;
         this.measurements = measurements;
     }
@@ -15,7 +15,7 @@ public class StatsDTO {
         return stats;
     }
 
-    public List<TempHumidityDTO> getMeasurements() {
+    public List<StatsTempHumidityDTO> getMeasurements() {
         return measurements;
     }
 
@@ -23,7 +23,7 @@ public class StatsDTO {
         this.stats = stats;
     }
 
-    public void setMeasurements(List<TempHumidityDTO> measurements) {
+    public void setMeasurements(List<StatsTempHumidityDTO> measurements) {
         this.measurements = measurements;
     }
     
