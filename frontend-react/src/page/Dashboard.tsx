@@ -17,11 +17,11 @@ function Dashboard() {
       <div className="chart-row">
         <div className="chart-panel">
           <h2>24h Statistics</h2>
-          <LineChart stats={stats24h} />
+          <LineChart stats={stats24h} timeUnit="hour" />
         </div>
         <div className="chart-panel">
           <h2>Full Statistics</h2>
-          <LineChart stats={allStats} />
+          <LineChart stats={allStats}  timeUnit="day"/>
         </div>
       </div>
 
