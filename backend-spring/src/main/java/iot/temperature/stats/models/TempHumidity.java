@@ -5,13 +5,22 @@ import java.time.Instant;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotEmpty;
+
 @Document(collection = "climate-data")
 public class TempHumidity {
 
     @Id
     private String id;
+    @NotEmpty 
     private String device;
+    @DecimalMin("-40")
+    @DecimalMax("110")
     private double temp;
+    @DecimalMin("0")
+    @DecimalMax("100")
     private double humidity;
     private Instant measureTime;
 
