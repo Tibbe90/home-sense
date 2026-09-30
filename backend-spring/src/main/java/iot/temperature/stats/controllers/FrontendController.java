@@ -41,17 +41,20 @@ public class FrontendController {
     }
 
     // Returns abnormal data, otherwise ok
+    // Unused
     @GetMapping("/status")
     public ResponseEntity<String> getStatusDto() {
         return ResponseEntity.ok(frontendService.getStatus());
     }
 
+    // Unused
     @DeleteMapping("/delete-all")
     public ResponseEntity<Void> clearSensorData() {
         frontendService.delete();
         return ResponseEntity.noContent().build();
     }
 
+    // Unused
     @DeleteMapping("/delete/{readings}")
     public ResponseEntity<Void> clearSpecifiedSensorData(@PathVariable int readings) {
         frontendService.delete(readings);
