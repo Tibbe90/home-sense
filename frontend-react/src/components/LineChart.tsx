@@ -53,7 +53,6 @@ function LineChart({ stats }: LineChartProps) {
     x: { type: "time" as const, time: { unit: "minute" as const } },
     y: { beginAtZero: false },
   };
-  console.log("humidity DATA:::: ", humidityData);
 
     return (
   <div id="charts">

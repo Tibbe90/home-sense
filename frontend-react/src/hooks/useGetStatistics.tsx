@@ -3,7 +3,7 @@ import api from "../api";
 import type { StatsDTO } from "../types/types";
 
 function useGetStatistics() {
-const url = "frontend/24stats"
+const url = "frontend/all-stats"
 const [allStats, setAllStats] = useState<StatsDTO[]>([]);
 
 useEffect(() => {
