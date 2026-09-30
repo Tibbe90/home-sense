@@ -29,16 +29,16 @@ Plugga.tech MongoDb med Spring Boot
 public class FrontendService {
 
     private final MongoOperations mongoOperations;
-    private final List<String> devices;
+    private List<String> devices;
 
-    public FrontendService(MongoOperations mongoOperations, List<String> devices) {
+    public FrontendService(MongoOperations mongoOperations) {
         this.mongoOperations = mongoOperations;
-        this.devices = getAllDevices();
+        updateDeviceList();
     }
 
-    public List<String> getAllDevices() {
+    public void updateDeviceList() {
         List<String> devices = mongoOperations.findDistinct("device", TempHumidity.class, String.class);
-        return devices;
+        this.devices = devices;
     }
 
     public List<TempHumidityDTO> getLatestData() {
