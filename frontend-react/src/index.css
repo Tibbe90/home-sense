@@ -51,7 +51,7 @@
 }
 
 #root {
-  width: 1126px;
+  width: 1600px;
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
@@ -108,4 +108,49 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+.chart-row {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.chart-panel {
+  flex: 1;
+  min-width: 400px;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.current-data-box {
+  margin-top: .35rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: inline-block;
+  text-align: center;
+  color: var(--text);
+}
+
+#charts table {
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  text-align: left;
+}
+
+#charts th,
+#charts td {
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.8rem;
+  text-align: right;
+  color: var(--text);
+}
+
+#charts th:first-child,
+#charts td:first-child {
+  text-align: left;
 }

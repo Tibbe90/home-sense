@@ -3,11 +3,29 @@ target/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+
 /iot-devices/Modulino-wifi-post-temp/settings.h
 /iot-devices/DHT11-wifi-post-temp/settings.h
-/backend-quarkus/
 /backend-spring/.env
+/frontend-react/.env
 home-sense.drawio.png
+/frontend-react/node_modules/
+/node_modules/
+
+#Logs
+
+/frontend-react/logs
+/frontend-react/*.log
+/frontend-react/npm-debug.log*
+/frontend-react/yarn-debug.log*
+/frontend-react/yarn-error.log*
+/frontend-react/pnpm-debug.log*
+/frontend-react/lerna-debug.log*
+
+/frontend-react/dist
+/frontend-react/dist-ssr
+/frontend-react/*.local
+
 
 ### STS ###
 .apt_generated

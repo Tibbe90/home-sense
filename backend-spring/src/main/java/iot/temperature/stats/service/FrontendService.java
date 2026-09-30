@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import iot.temperature.stats.models.Stats;
 import iot.temperature.stats.models.StatsDTO;
+import iot.temperature.stats.models.StatsTempHumidityDTO;
 import iot.temperature.stats.models.TempHumidity;
 import iot.temperature.stats.models.TempHumidityDTO;
 import iot.temperature.stats.models.TempMapper;
@@ -114,8 +115,8 @@ public class FrontendService {
             Instant periodStart = deviceMeasurements.get(0).getMeasureTime();
             Instant periodEnd = deviceMeasurements.get(deviceMeasurements.size() - 1).getMeasureTime();
 
-            List<TempHumidityDTO> dtos = deviceMeasurements.stream()
-                .map(temp -> TempMapper.toDisplayTempHumidityDTO(temp))
+            List<StatsTempHumidityDTO> dtos = deviceMeasurements.stream()
+                .map(temp -> TempMapper.toDisplayStatsTempHumidityDTO(temp))
                 .toList();
 
             Stats stats = new Stats(
