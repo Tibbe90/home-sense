@@ -4,7 +4,7 @@ This is for IoT a school assignment.
 IoT temperature/humidity monitoring. Arduino UNO R4 WiFi sensors post readings
 to a Spring Boot + MongoDB backend; a React frontend displays live data and
 historical stats.
-
+[![Dashboard](./resources/Arduinos-in-use.png)](./resources/Arduinos-in-use.png)
 ## Architecture
 
 - `arduino/` — sensor firmware, posts JSON over HTTP
@@ -12,13 +12,16 @@ historical stats.
 - `frontend-react/` — React/Vite dashboard (charts + current readings)
 - MongoDB — stores raw measurements
 
+
+[![Data flow diagram](./resources/Data-flow.png)](./resources/Data-flow.png)
+
 ## Setup
 ### Set up the hardware. Here's a couple of examples:
-
+[![Arduinos](./resources/Arduinos-in-use.png)](./resources/Arduinos-in-use.png)
 1. Copy `.env.example` to `.env` and fill in:
    - `ARDUINO_API_KEY`
    - `FRONTEND_API_KEY`
-2. On each Arduino, Copy `settings.h.example` to `settings.h` and fill in WiFi + API key.
+2. For each Arduino setup, Copy `settings.h.example` to `settings.h` and fill in WiFi + API key.
 3. Install Arduino IDE [Arduino](https://www.arduino.cc/en/software/)
 4. Install `ArduinoHttpClient`, `ArduinoJson` and `DHT sensor library`(by Adafruit) or `Arduino_Modulino` (depending on what sensor have) through the library manager.
 5. Verify the code, and upload the corresponding code to your sensor.

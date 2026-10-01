@@ -8,7 +8,7 @@ target/
 /iot-devices/DHT11-wifi-post-temp/settings.h
 /backend-spring/.env
 /frontend-react/.env
-home-sense.drawio.png
+.env
 /frontend-react/node_modules/
 /node_modules/
 
