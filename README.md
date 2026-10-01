@@ -1,5 +1,5 @@
 # Home Sense
-This is for IoT a school assignment.
+This is for a IoT school assignment.
 
 IoT temperature/humidity monitoring. Arduino UNO R4 WiFi sensors post readings
 to a Spring Boot + MongoDB backend; a React frontend displays live data and
