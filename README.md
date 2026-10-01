@@ -25,7 +25,7 @@ My hardware consists of 2 Arduino Uno Rev Wifi. 1 DHT11 Temperature & Humidity s
    - `FRONTEND_API_KEY`
 2. For each Arduino setup, Copy `settings.h.example` to `settings.h` and fill in WiFi + API key.
 3. Install Arduino IDE [Arduino](https://www.arduino.cc/en/software/)
-4. Install `ArduinoHttpClient`, `ArduinoJson` and `DHT sensor library`(by Adafruit) or `Arduino_Modulino` (depending on what sensor have) through the library manager.
+4. Install `ArduinoHttpClient`, `ArduinoJson` and `DHT sensor library`(by Adafruit) or `Arduino_Modulino` (depending on what sensor you have) through the library manager.
 5. Verify the code, and upload the corresponding code to your sensor.
 
 ### How to run with Docker
@@ -57,6 +57,11 @@ npm run dev
 ```
 - Navigate to [Localhost](http://localhost:5173/)
 
+## Known Issues
+Some endpoints are not implemented.  
+Exception handling is quite minimal. There's some validation of saved data, out of range data is caught on the backend and discarded. Endpoints don't give any feedback on this however.
+
+
 ## API
 
 - `POST /arduino/sensor-data` — Arduino sensor ingestion, requires `API-Key` header
@@ -74,7 +79,7 @@ npm run dev
 - API key auth via `ApiKeyAuthFilter`, checked per-path (`/arduino`, `/frontend`)
 - Secrets live in `.env` / `settings.h`
 
-# Tech Stack
+## Tech Stack
 
 ### Firmware
 
