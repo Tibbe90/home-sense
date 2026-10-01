@@ -3,9 +3,8 @@ This is for IoT a school assignment.
 
 IoT temperature/humidity monitoring. Arduino UNO R4 WiFi sensors post readings
 to a Spring Boot + MongoDB backend; a React frontend displays live data and
-historical stats.
-[![Dashboard](./resources/Arduinos-in-use.png)](./resources/Arduinos-in-use.png)
-<a href="resources/Arduinos-in-use.png"><img src="resources/Arduinos-in-use.png" alt="Dashboard" width="400"/></a>
+historical stats.  
+<a href="resources/stats.png"><img src="resources/stats.png" alt="Dashboard" width="400"/></a>
 ## Architecture
 
 - `arduino/` — sensor firmware, posts JSON over HTTP
@@ -14,11 +13,11 @@ historical stats.
 - MongoDB — stores raw measurements
 
 
-[![Data flow diagram](./resources/Data-flow.png)](./resources/Data-flow.png)
+<a href="./resources/Data-flow.png"><img src="./resources/Data-flow.png" alt="Diagram" width="400"/></a>  
 
 ## Setup
 ### Set up the hardware. Here's a couple of examples:
-[![Arduinos](./resources/Arduinos-in-use.png)](./resources/Arduinos-in-use.png)
+<a href="resources/Arduinos-in-use.png"><img src="resources/Arduinos-in-use.png" alt="Arduinos" width="400"/></a>  
 1. Copy `.env.example` to `.env` and fill in:
    - `ARDUINO_API_KEY`
    - `FRONTEND_API_KEY`
