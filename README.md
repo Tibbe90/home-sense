@@ -108,4 +108,4 @@ I have chosen to use Spring Boot with MongoDB database management because this p
 #####
 React was chosen because I wanted to display my current data with live updates without reloading the dashboard. This was however quite unnecessary with how the project currently works, sensor updates only arrive every 15 minutes and most user will not notice the live data. 
 #####
-The choice of sensors was a lucky guess, Before this project started, I did not know that the sensors were different. It did work out well though because the DHT11 is not designed temperatures below 0C°, and the modulino sensor is able to measure a much wider range. This works well with what I wanted my product to do.
+The choice of sensors was a lucky guess, Before this project started, I did not know that the sensors were different. It did work out well though because the DHT11 is not designed to measure temperatures below 0C°, and the modulino sensor is able to measure a much wider range. This works well with what I wanted my product to do.
