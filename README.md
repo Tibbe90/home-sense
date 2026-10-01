@@ -5,6 +5,7 @@ IoT temperature/humidity monitoring. Arduino UNO R4 WiFi sensors post readings
 to a Spring Boot + MongoDB backend; a React frontend displays live data and
 historical stats.
 [![Dashboard](./resources/Arduinos-in-use.png)](./resources/Arduinos-in-use.png)
+<a href="resources/Arduinos-in-use.png"><img src="resources/Arduinos-in-use.png" alt="Dashboard" width="400"/></a>
 ## Architecture
 
 - `arduino/` — sensor firmware, posts JSON over HTTP
