@@ -16,7 +16,9 @@ historical stats.
 <a href="./resources/Data-flow.png"><img src="./resources/Data-flow.png" alt="Diagram" width="400"/></a>  
 
 ## Setup
-### Set up the hardware. Here's a couple of examples:
+### Set up the hardware. 
+My hardware consists of 2 Arduino Uno Rev Wifi. 1 DHT11 Temperature & Humidity sensor connect with 3 male-female connectors. Sensory input data at digital pin 8. 1 modulino Temperature & Humidity sensor, note that this sensor has a wider range and is more precise.
+#### Here's how my setup looks:
 <a href="resources/Arduinos-in-use.png"><img src="resources/Arduinos-in-use.png" alt="Arduinos" width="400"/></a>  
 1. Copy `.env.example` to `.env` and fill in:
    - `ARDUINO_API_KEY`
@@ -94,3 +96,11 @@ npm run dev
 
 ### Database
 - MongoDB
+
+## Personal reflections
+##### 
+I have chosen to use Spring Boot with MongoDB database management because this project had many different components to it, and I am most familiar with this API framework.
+#####
+React was chosen because I wanted to display my current data with live updates without reloading the dashboard. This was however quite unnecessary with how the project currently works, sensor updates only arrive every 15 minutes and most user will not notice the live data. 
+#####
+The choice of sensors was a lucky guess, Before this project started, I did not know that the sensors were different. It did work out well though because the DHT11 is not designed temperatures below 0C°, and the modulino sensor is able to measure a much wider range. This works well with what I wanted my product to do.
