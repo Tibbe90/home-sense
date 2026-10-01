@@ -17,8 +17,8 @@ historical stats.
 
 ## Setup
 ### Set up the hardware. 
-My hardware consists of 2 Arduino Uno Rev Wifi. 1 DHT11 Temperature & Humidity sensor connect with 3 male-female connectors. Sensory input data at digital pin 8. 1 modulino Temperature & Humidity sensor, note that this sensor has a wider range and is more precise.
-#### Here's how my setup looks:
+My hardware consists of 2 Arduino Uno Rev 4 Wifi. 1 DHT11 Temperature & Humidity sensor connected with 3 male-female connectors. Sensory input data at digital pin 8. 1 modulino Temperature & Humidity sensor, note that this sensor has a wider range and is more precise.
+#### Here's how my test setup looks:
 <a href="resources/Arduinos-in-use.png"><img src="resources/Arduinos-in-use.png" alt="Arduinos" width="400"/></a>  
 1. Copy `.env.example` to `.env` and fill in:
    - `ARDUINO_API_KEY`
@@ -59,7 +59,9 @@ npm run dev
 
 ## Known Issues
 Some endpoints are not implemented.  
-Exception handling is quite minimal. There's some validation of saved data, out of range data is caught on the backend and discarded. Endpoints don't give any feedback on this however.
+Exception handling is quite minimal. There's some validation of saved data, out of range data is caught on the backend and discarded. Endpoints don't give any feedback on this however.  
+Needs power optimization to run with a battery for a feasible amount of time. Research required.
+
 
 
 ## API
