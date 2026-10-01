@@ -22,9 +22,10 @@ ChartJS.register(
 
 interface LineChartProps {
   stats?: StatsDTO[];
+  timeUnit?: "hour" | "day";
 }
 
-function LineChart({ stats }: LineChartProps) {
+function LineChart({ stats, timeUnit = "hour" }: LineChartProps) {
   const colors = ["blue", "green"];
 
   const tempData =
@@ -50,7 +51,10 @@ function LineChart({ stats }: LineChartProps) {
     })) ?? [];
 
   const options = {
-    x: { type: "time" as const, time: { unit: "minute" as const } },
+    x: { type: "time" as const, 
+      time: { unit: timeUnit,
+        displayFormats: { hour: "HH:mm", day: "MMM d"}
+      }, },
     y: { beginAtZero: false },
   };
 
