@@ -9,7 +9,6 @@ target/
 /backend-spring/.env
 /frontend-react/.env
 .env
-home-sense.drawio.png
 /frontend-react/node_modules/
 /node_modules/
 
