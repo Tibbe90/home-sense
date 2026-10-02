@@ -23,7 +23,7 @@ My hardware consists of 2 Arduino Uno Rev 4 Wifi. 1 DHT11 Temperature & Humidity
 1. Copy `.env.example` to `.env` and fill in:
    - `ARDUINO_API_KEY`
    - `FRONTEND_API_KEY`
-2. For each Arduino setup, Copy `settings.h.example` to `settings.h` and fill in WiFi + API key.
+2. For each Arduino setup, Copy `settings.h.example` to `settings.h` and fill in WiFi + API key. Find your local IP-adress, and update the "char server[] = "###.###.##.##";" variable in the main .ino file.
 3. Install Arduino IDE [Arduino](https://www.arduino.cc/en/software/)
 4. Install `ArduinoHttpClient`, `ArduinoJson` and `DHT sensor library`(by Adafruit) or `Arduino_Modulino` (depending on what sensor you have) through the library manager.
 5. Verify the code, and upload the corresponding code to your sensor.
